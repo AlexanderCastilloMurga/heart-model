@@ -12,17 +12,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: python version
-      run: python --version
     - name: pip install
       run: python install -r requirements.txt
-    - name: download dataset
-      run: wget -O data/heart_disease.csv ${{github.event.client_payload.dataseturl}}
-    - name: cat dataset
-      run: cat data/heart_disease.csv
     - name: train model
       run: python model/train.py
-
 
     - name: docker build
       run: docker build -t ${{secrets.DOCKER_USER}}/${{secrets.MODEL_NAME}}:${{github.sha}} .
