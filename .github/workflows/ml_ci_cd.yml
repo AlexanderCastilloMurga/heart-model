@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    
+    - name: python version
+      run: python --version
     - name: pip install
       run: python install -r requirements.txt
     - name: train model
